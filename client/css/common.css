@@ -1,0 +1,28 @@
+#root {
+    overflow: hidden!important;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently*/
+}
+div{
+    touch-action: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+::-webkit-scrollbar {
+    background: transparent;
+    width:0;
+    height:0;
+}
+.hide{
+    display: none!important;
+}
+
+body,.ant-modal-mask , .ant-modal-wrap ,.totalClass,.storeManagerQrcodeComponent,.pageContainer{
+
+}

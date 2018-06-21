@@ -1,17 +1,10 @@
 const path = require('path');
 const webpack = require('webpack')
 const rucksack = require('rucksack-css');
-// var HtmlWebpackPlugin = require('html-webpack-plugin');
-// var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-//     template: path.join(__dirname + '/app/index.html'),
-//     filename: 'index.html',
-//     inject: 'body'
-// })
 let baseConfig = {
     context : path.join(__dirname,'./client'), //基础目录
     entry : { //入口文件
-        jsx:'./index.js',
-        html :'./index.html',
+        index:['./index.js','./index.html'],
         vendor:[
             'react',
             'react-dom',
@@ -20,55 +13,45 @@ let baseConfig = {
         ]
     },
     module : {
-        loaders:[
+        rules:[
             {
-                test:/\.(ttf|eto|svg|otf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader:"url-loader?limit=1024&name=[path][name].[ext]&outputPath=font/&publicPath=output/"
+                test:/\.(ttf|eto|otf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use:["url-loader?limit=1024"]
+            },
+            {
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                use: ['url-loader?limit=10000&mimetype=image/svg+xml']
             },
             {
                 test:/\.(jpg|png|jpeg)$/,
-                loader:"url-loader?limit=1024&name=[path][name].[ext]&outputPath=img/&publicPath=output/&mimetype=image/png"
+                use:["url-loader?limit=512000&name=[name]-[hash:6].[ext]&mimetype=image/png"] //limit 500kb
             },
             {
                 test:/\.(gif)$/,
-                loader:"url-loader?limit=1024&name=[path][name].[ext]&outputPath=img/&publicPath=output/&mimetype=image/gif"
+                use:["url-loader?limit=512000&name=[path][name].[ext]&mimetype=image/gif"]
             },
             {
                 test: /\.html$/,
-                loader: 'file-loader?name=[name].[ext]'
+                use: ['file-loader?name=[name].[ext]']
             },
             {
-                test: /\.css$/,
-                use:[
-                    {
-                        loader:"style-loader",
-                    },
-                    {
-                        loader:"css-loader",
-                        options:{
-                            importLoaders: 1,
-                            modules:true
-                        }
-                    },
-                    {
-                        loader:"postcss-loader",
-                        options: {           // 如果没有options这个选项将会报错 No PostCSS Config found
-                            plugins: (loader) => [
-                                rucksack({ autoprefixer : true})
-                            ]
-                        }
-                    }
-                ],
+                test: /\.(scss$|css)$/,
+                use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"]
             },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
+                include: path.join(__dirname, 'client'),
                 use: ['babel-loader?cacheDirectory=true']
             }
         ]
     },
     resolve:{ //自动解析确定的扩展
-        extensions:['.js','.jsx']
+        extensions:['.js', '.jsx', '.scss', '.css'],
+        modules: [
+            path.resolve(__dirname, 'node_modules'),
+            path.join(__dirname, './client')
+        ]
     }
 }
 function getEnv(){
@@ -93,7 +76,6 @@ let envConfig = {
         },
         plugins:[
             new webpack.optimize.UglifyJsPlugin(), //js压缩
-            new webpack.optimize.DedupePlugin(), //删除重复数据
             new webpack.optimize.CommonsChunkPlugin({
                 name : "vendor",
                 filename : "vendor.bundle.js"
@@ -104,9 +86,10 @@ let envConfig = {
             }),
             new webpack.ProvidePlugin({
                 ENV: __dirname + '/client/env/' + (process.env.NODE_ENV || 'development'),
-                IMAGEPATH:__dirname+'/client/config/image'
+                UTILPATH:__dirname+'/client/util/util',
+                CONFIG:__dirname+'/client/config/index'
             }),
-            new webpack.NoErrorsPlugin(), //配置了NoErrorsPlugin插件，用来跳过编译时出错的代码并记录，使编译后运行时的包不会发生错误
+            new webpack.NoEmitOnErrorsPlugin(), //配置了NoErrorsPlugin插件，用来跳过编译时出错的代码并记录，使编译后运行时的包不会发生错误
         ]
 
     },
@@ -117,7 +100,6 @@ let envConfig = {
         },
         plugins:[
             new webpack.optimize.UglifyJsPlugin(), //js压缩
-            new webpack.optimize.DedupePlugin(), //删除重复数据
             new webpack.optimize.CommonsChunkPlugin({
                 name : "vendor",
                 filename : "vendor.bundle.js"
@@ -127,7 +109,8 @@ let envConfig = {
             }),
             new webpack.ProvidePlugin({
                 ENV: __dirname + '/client/env/' + (process.env.NODE_ENV || 'development'),
-                IMAGEPATH:__dirname+'/client/config/image'
+                UTILPATH:__dirname+'/client/util/util',
+                CONFIG:__dirname+'/client/config/index'
             }),
             new webpack.LoaderOptionsPlugin({
                 options: {

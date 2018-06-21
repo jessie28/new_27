@@ -1,0 +1,85 @@
+/* 字体大小使用px，针对不同dpr屏幕设置不同样式 */
+body{
+    --font2:2;
+    --font3:3;
+    --font10:10;
+}
+
+@value font10: 10px;
+@value font12: 12px;
+@value font14: 14px;
+@value font16: 16px;
+@value font18: 18px;
+@value font20: 20px;
+@value font22: 22px;
+@value font24: 24px;
+@value font26: 26px;
+@value font28: 28px;
+@value font30: 30px;
+@value font40: 40px;
+@value font50: 50px;
+@value font60: 60px;
+
+.font10 {
+    font-size: font10 !important;
+}
+
+[data-dpr="2"] .font10 {
+    font-size: calc(var(--font2) * font10) !important;
+}
+
+[data-dpr="3"] .font10 {
+    font-size: calc(var(--font3) * font10) !important;
+}
+.font12 {
+    font-size: font12 !important;
+}
+
+[data-dpr="2"] .font12 {
+    font-size: calc(var(--font2) * font12) !important;
+}
+
+[data-dpr="3"] .font12 {
+    font-size: calc(var(--font3) * font12) !important;
+}
+.font14 {
+    font-size: font14 !important;
+}
+
+[data-dpr="2"] .font14 {
+    font-size: calc(var(--font2) * font14) !important;
+}
+
+[data-dpr="3"] .font14 {
+    font-size: calc(var(--font3) * font14) !important;
+}
+
+
+@font-face {
+    /* font-properties */
+    font-family: HYQiHei80;
+    src:url('../font/HYQiHei-80S.ttf')
+}
+@font-face {
+    /* font-properties */
+    font-family: HYQiHei65;
+    src:url('../font/HYQiHei-65S.ttf')
+}
+@font-face {
+    /* font-properties */
+    font-family: HYQiHei50;
+    src:url('../font/HYQiHei-50S.ttf')
+}
+
+.fontFamily_HYQiHei50{
+    font-family: HYQiHei50 !important;
+}
+.fontFamily_HYQiHei65{
+    font-family: HYQiHei65 !important;
+}
+.fontFamily_HYQiHei80{
+    font-family: HYQiHei80 !important;
+}
+div{
+    font-family: HYQiHei50;
+}

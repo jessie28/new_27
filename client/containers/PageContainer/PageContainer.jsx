@@ -1,6 +1,8 @@
 "use strict";
 import React from 'react';
 import {connect} from 'react-redux';
+import HeaderContainer from '../HeaderContainer/HeaderContainer'
+import BannerContainer from '../BannerContainer/BannerContainer'
 require('./index.css');
 
 class PageContainer extends React.Component{
@@ -9,8 +11,9 @@ class PageContainer extends React.Component{
     }
     render(){
         return (
-            <div>
-                hello
+            <div className={"pageContainer"}>
+                <HeaderContainer />
+                <BannerContainer />
             </div>
         )
     }

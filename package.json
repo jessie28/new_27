@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf static/*",
     "start": "set NODE_ENV=development && webpack-dev-server --env=dev -d --history-api-fallback --hot --inline --progress --colors --port 80 --host 0.0.0.0",
-    "build": "NODE_ENV=production webpack --env=build --progress --color"
+    "build": "set NODE_ENV=production && webpack --env=build --progress --color"
   },
   "author": "",
   "license": "MIT",
@@ -27,12 +27,15 @@
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "minimist": "^1.2.0",
+    "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
     "react-hot-loader": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "rucksack-css": "^1.0.2",
+    "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
+    "swiper": "^3.4.2",
     "url-loader": "^1.0.1",
     "webpack": "^3.12.0",
     "webpack-dev-server": "^2.11.2"
