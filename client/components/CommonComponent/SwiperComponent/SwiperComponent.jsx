@@ -12,7 +12,7 @@ export default class SwiperComponent extends React.Component{
 
     componentDidMount(){
         let {swiperContainer,swiperOptions} = this.props;
-        console.log(swiperContainer)
+        console.log(swiperContainer,swiperOptions)
         this.setState({
             swiper : new Swiper("."+swiperContainer, swiperOptions)
         })
@@ -21,7 +21,6 @@ export default class SwiperComponent extends React.Component{
 
     componentDidUpdate(prevProps){
         const { childCount } = this.props;
-        console.log(this.props)
         if (prevProps.childCount !== childCount) {
             this.state.swiper.init();
         }
@@ -36,7 +35,6 @@ export default class SwiperComponent extends React.Component{
     render(){
         let props = this.props;
         let {swiperContainer,swiperOptions} = props;
-        console.log(props.children);
         let childNodes = React.Children.map(props.children,function (child,index) {
             return (
                 <div key={swiperContainer + "swiper" +index} className={"swiper-slide"}>
@@ -44,15 +42,21 @@ export default class SwiperComponent extends React.Component{
                 </div>
             )
         });
-        console.log(childNodes);
         return(
             <div className={"swiper-container " + swiperContainer}>
                 <div className={"swiper-wrapper"}>
                     {childNodes}
                 </div>
-                <div className="swiper-pagination"></div>
-                <div className="swiper-button-next"></div>
-                <div className="swiper-button-prev"></div>
+                {
+                    swiperOptions.pagination ? <div className="swiper-pagination"></div> : null
+                }
+                {
+                    swiperOptions.prevButton ?  <div className="swiper-button-prev"></div> : null
+                }
+                {
+                    swiperOptions.nextButton ?  <div className="swiper-button-next"></div> : null
+                }
+
             </div>
         )
     }
