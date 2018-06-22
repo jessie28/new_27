@@ -1,0 +1,42 @@
+.categoryContent{
+    position: relative;
+    width: 100%;
+}
+.categorySwiperContainer{
+    margin: 0 0 0 54px;
+    padding-right: 54px;
+}
+.categoryItem{
+    display: inline-block;
+    height: 88px;
+    position: relative;
+    text-align: center;
+}
+.categoryItem .categoryimg{
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 60px;
+    height: 60px;
+}
+.categoryItem .categoryimg>img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.categorytext{
+    width: 100%;
+    margin-top: 10px;
+    color: #666;
+}
+.categoryItem.activity{
+    background: url('../../../image/c_bg.png') 0 0 no-repeat;
+    width: 101px;
+    line-height: 101px;
+}
+.categoryItem.activity .categoryimg{
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -99,3 +99,6 @@ i{
 .fr{
     float: right;
 }
+div{
+    box-sizing: border-box;
+}

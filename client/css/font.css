@@ -53,7 +53,28 @@ body{
 [data-dpr="3"] .font14 {
     font-size: calc(var(--font3) * font14) !important;
 }
+.font18 {
+    font-size: font18 !important;
+}
 
+[data-dpr="2"] .font18 {
+    font-size: calc(var(--font2) * font18) !important;
+}
+
+[data-dpr="3"] .font18 {
+    font-size: calc(var(--font3) * font18) !important;
+}
+.font24 {
+    font-size: font24 !important;
+}
+
+[data-dpr="2"] .font24 {
+    font-size: calc(var(--font2) * font24) !important;
+}
+
+[data-dpr="3"] .font24 {
+    font-size: calc(var(--font3) * font24) !important;
+}
 
 @font-face {
     /* font-properties */

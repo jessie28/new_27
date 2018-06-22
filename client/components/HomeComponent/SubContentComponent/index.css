@@ -1,0 +1,43 @@
+.subContent{
+    width: 100%;
+}
+.subContent .subSwiperContainer{
+    margin: 30px 0 40px 48px;
+    overflow: visible;
+}
+.subContent .subItem{
+    display: inline-block;
+    text-align: center;
+    border: 1px solid transparent;
+    background: #c9ebf4;
+    height: 42px;
+    box-shadow: 0px 0px 10px 0 #c9ebf4;
+    border-radius: 50%;
+    padding: 14px;
+    line-height: 13px;
+}
+.subContent .subItem.activity{
+    border: 1px solid transparent;
+    background: #ff7860;
+    box-shadow: 0px 0px 10px 0 #ff7860;
+}
+.subContent .subItem1,.subContent .subItem2{
+    width: 76px;
+    line-height: 42px;
+    padding: 0;
+    border-top-left-radius: 39px 24px;
+    border-top-right-radius: 37px 24px;
+    border-bottom-right-radius: 37px 18px;
+    border-bottom-left-radius: 39px 18px;
+
+}
+.subContent .subItem3,.subContent .subItem4{
+    width: 124px;
+    line-height: 42px;
+    padding: 0;
+    border-top-left-radius: 65px 24px;
+    border-top-right-radius: 59px 24px;
+    border-bottom-right-radius: 65px 18px;
+    border-bottom-left-radius: 59px 18px;
+
+}

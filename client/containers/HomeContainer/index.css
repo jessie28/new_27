@@ -1,0 +1,18 @@
+.homeContainer{
+    position: relative;
+    width: 100%;
+}
+
+.homeContainer .homeLight{
+    position: absolute;
+    right: -20px;
+    height: 100%;
+    top: 0;
+    width: 20px;
+    box-shadow: 0 0 100px 20px #fff;
+    z-index: 2;
+}
+
+.homeContainer .subSwiperContainer .swiper-slide,.homeContainer .categorySwiperContainer .swiper-slide{
+    width: auto;
+}

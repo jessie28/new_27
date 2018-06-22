@@ -48,13 +48,13 @@ export default class SwiperComponent extends React.Component{
                     {childNodes}
                 </div>
                 {
-                    swiperOptions.pagination ? <div className="swiper-pagination"></div> : null
+                    swiperOptions && swiperOptions.pagination ? <div className="swiper-pagination"></div> : null
                 }
                 {
-                    swiperOptions.prevButton ?  <div className="swiper-button-prev"></div> : null
+                    swiperOptions && swiperOptions.prevButton ?  <div className="swiper-button-prev"></div> : null
                 }
                 {
-                    swiperOptions.nextButton ?  <div className="swiper-button-next"></div> : null
+                    swiperOptions && swiperOptions.nextButton ?  <div className="swiper-button-next"></div> : null
                 }
 
             </div>
