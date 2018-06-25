@@ -22,6 +22,9 @@ div{
 .hide{
     display: none!important;
 }
+.disappear{
+    opacity: 0!important;
+}
 
 body,.ant-modal-mask , .ant-modal-wrap ,.totalClass,.storeManagerQrcodeComponent,.pageContainer{
 

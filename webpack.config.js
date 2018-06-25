@@ -15,8 +15,8 @@ let baseConfig = {
     module : {
         rules:[
             {
-                test:/\.(ttf|eto|otf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                use:["url-loader?limit=1024"]
+                test:/\.(ttf|eot|otf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use:["url-loader?limit=5120"]
             },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
@@ -43,6 +43,16 @@ let baseConfig = {
                 exclude: /node_modules/,
                 include: path.join(__dirname, 'client'),
                 use: ['babel-loader?cacheDirectory=true']
+            },
+            {
+                // iconfont
+                test: /icons/,
+                // embed解决 对publicPath解析bug
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'webfonts-loader'
+                ]
             }
         ]
     },

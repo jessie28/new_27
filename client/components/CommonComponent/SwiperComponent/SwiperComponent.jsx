@@ -12,7 +12,6 @@ export default class SwiperComponent extends React.Component{
 
     componentDidMount(){
         let {swiperContainer,swiperOptions} = this.props;
-        console.log(swiperContainer,swiperOptions)
         this.setState({
             swiper : new Swiper("."+swiperContainer, swiperOptions)
         })

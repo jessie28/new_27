@@ -1,5 +1,6 @@
 module.exports = {
     bannerSwiperContainer : 'bannerSwiperContainer',
     categorySwiperContainer : 'categorySwiperContainer',
-    subSwiperContainer : 'subSwiperContainer'
+    subSwiperContainer : 'subSwiperContainer',
+    skuListSwiperContainer : 'skuListSwiperContainer',
 }

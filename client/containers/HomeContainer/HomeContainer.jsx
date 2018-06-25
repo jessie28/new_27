@@ -16,142 +16,18 @@ export default class HomeContainer extends React.Component{
     }
 
     componentWillMount(){
-        let arr = [
-            {
-                img:'all',
-                text:'全部',
-                activity:true
-            },
+        let {categories,currentPicked} = this.props;
+        console.log("currentPicked",currentPicked)
+        let currentSubCategory = categories[currentPicked[0]].categories;
 
-            {
-                img:'a',
-                text:'全部全部',
-                activity:false
-            },
-            {
-                img:'b',
-                text:'全部全部',
-                activity:false
-            },
-            {
-                img:'c',
-                text:'全部全部',
-                activity:false
-            },
-            {
-                img:'d',
-                text:'全部',
-                activity:false
-            },
-            {
-                img:'drink',
-                text:'全部全部',
-                activity:false
-            },
-            {
-                img:'e',
-                text:'全部全部',
-                activity:false
-            },
-            {
-                img:'f',
-                text:'全部全部',
-                activity:false
-            },
-            {
-                img:'food',
-                text:'全部全部',
-                activity:false
-            },
-            {
-                img:'g',
-                text:'全部',
-                activity:false
-            },
-            {
-                img:'h',
-                text:'全部',
-                activity:false
-            },
-            {
-                img:'j',
-                text:'全部全部全部',
-                activity:false
-            },
-            {
-                img:'k',
-                text:'全部',
-                activity:false
-            },
-            {
-                img:'l',
-                text:'全部',
-                activity:false
-            },
-            {
-                img:'s',
-                text:'全部',
-                activity:false
-            },
-        ];
-        let arr1 = [
-            {
-                name : '果',
-                activity : false
-            },
-            {
-                name : '果汁',
-                activity : true
-            },
-            {
-                name : '果汁饮料',
-                activity : false
-            },
-            {
-                name : '果汁多少度',
-                activity : false
-            },
-            {
-                name : '果汁度',
-                activity : false
-            },
-            {
-                name : '果汁',
-                activity : false
-            },
-            {
-                name : '果汁饮料果汁饮料',
-                activity : false
-            },
-            {
-                name : '果汁多少度',
-                activity : false
-            },
-            {
-                name : '果汁度',
-                activity : false
-            },
-            {
-                name : '果汁',
-                activity : true
-            },
-            {
-                name : '果汁饮料',
-                activity : false
-            },
-            {
-                name : '果汁多少度',
-                activity : false
-            },
-            {
-                name : '果汁度',
-                activity : false
-            }
-        ];
         this.setState({
-            categoryArr : arr,
-            subArr:arr1
+            categoryArr : categories,
+            subArr:currentSubCategory
         })
+    }
+
+    componentWillReceiveProps(nextProps){
+        let {categories,currentPicked} = nextProps;
     }
 
     handleCategoryClick(key){
@@ -184,10 +60,12 @@ export default class HomeContainer extends React.Component{
 
 
     render(){
+        let {categories,currentPicked} = nextProps;
         return(
             <div className={"homeContainer"}>
-                <CategoryComponent categoryList={this.state.categoryArr} handleCategoryClick={this.handleCategoryClick} />
+                <CategoryComponent categoryList={this.state.categoryArr} currentPicked={currentPicked} handleCategoryClick={this.handleCategoryClick} />
                 <SubContentComponent subContentList={this.state.subArr} handleSubClick={this.handleSubClick} />
+                <SkuListComponent />
                 <div className={"homeLight"}></div>
             </div>
         )

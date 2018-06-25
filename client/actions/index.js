@@ -1,9 +1,15 @@
-import actiontypes from '../actiontype/index'
-
-const initStart = function () {
+import actiontypes from '../actiontype/index';
+import mock from '../mock/index'
+const initStart = () => {
     return {
-        type : actiontypes.INITSTART
+        type : actiontypes.INITSTART,
+        data : mock
     }
 }
-
-export {initStart}
+const setPickedCategory = (data)=>{
+    return {
+        type:actiontypes.SETPICKEDCATEGORY,
+        data
+    }
+}
+export {initStart,setPickedCategory}

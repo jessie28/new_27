@@ -1,5 +1,6 @@
 const actionTypes = {
-    INITSTART : 'INITSTART'
+    INITSTART : 'INITSTART',
+    SETPICKEDCATEGORY : 'SETPICKEDCATEGORY',
 }
 
 export default actionTypes;

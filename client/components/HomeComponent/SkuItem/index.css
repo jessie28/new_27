@@ -1,0 +1,79 @@
+.skuItemComponent{
+    position: relative;
+    display: inline-block;
+    width: 220px;
+    height: 220px;
+    text-align: center;
+    overflow: hidden;
+    margin-left: 20px;
+}
+.skuItemComponent .skuInfo{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border:4px solid #c9e9f5;
+}
+.skuItemComponent .skuImgInfo{
+    display: inline-block;
+    position: relative;
+    width: 180px;
+    height: 180px;
+    padding-top: 14px;
+}
+.skuItemComponent .skuImg{
+    width: 100%;
+}
+.skuItemComponent .skuText{
+    line-height: 20px;
+}
+.skuItemComponent .cornerSigh{
+    position: absolute;
+}
+.skuItemComponent .skuLayer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,.6);
+    padding: 0 20px;
+    text-align: left;
+}
+.skuItemComponent .commonText{
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+}
+.skuItemComponent .skuBrandName{
+    margin-bottom: 10px;
+}
+.skuItemComponent .skuName{
+    margin-bottom: 20px;
+}
+.skuItemComponent .skuOpration{
+    margin: 38px 0 20px;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    flex-wrap: nowrap;
+}
+.skuItemComponent .skuPlus{
+    width: 70px;
+    height: 70px;
+    background: #ff7860;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    text-align: center;
+    line-height: 70px;
+}
+.skuItemComponent .skuMinus{
+    width: 70px;
+    height: 70px;
+    background: #ffffff;
+    border-radius: 50%;
+    border: 1px solid #ff7860;
+    text-align: center;
+    line-height: 70px;
+}

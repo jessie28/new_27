@@ -6,16 +6,41 @@ require('./index.css');
 export default class CategoryComponent extends React.Component{
     constructor(props){
         super(props);
+        this.getDom = this.getDom.bind(this)
     }
 
     componentWillMount(){
 
     }
 
-    render(){
+    getDom(){
         let props = this.props;
         let categoryList = props.categoryList;
+        let currentPicked = props.currentPicked;
         let handleCategoryClick = props.handleCategoryClick;
+        let doms = categoryList.map((cat,index)=>{
+            let defaultPic = cat.defaultPic;
+            let pickPic = cat.pickPic;
+            let dataInfo = {
+                key:cat.id,
+                subkey : 0
+            }
+            let d = cat.id === currentPicked[0]?
+                <div key={"categoryimg_"+index} className={"categoryItem activity"} onClick={()=>handleCategoryClick(cat.id,0)}>
+                    <div  className={"categoryimg"}><img src={pickPic} alt=""/></div>
+                </div>
+                :
+                <div key={"categoryimg_"+k} className={"categoryItem"} onClick={()=>handleCategoryClick(cat.id,0)}>
+                    <div  className={"categoryimg"}><img src={defaultPic} alt=""/></div>
+                    <div className={"categorytext font18"}>{cat.name}</div>
+                </div>;
+            return d;
+        });
+
+    }
+
+    render(){
+        let props = this.props;
         let swiperOptions = {
             spaceBetween: 64,
             freeMode:true,
@@ -23,25 +48,12 @@ export default class CategoryComponent extends React.Component{
             paginationClickable: true,
         };
         let swiperContainer = CONFIG.swiperContainers.categorySwiperContainer;
-
-        let addDom = categoryList.map((a,k)=>{
-            let keys = a.img;
-            let d = a.activity ?
-                <div key={"categoryimg_"+k} className={"categoryItem activity"} onClick={()=>handleCategoryClick(keys)}>
-                    <div  className={"categoryimg"}><img src={require(`../../../image/${a.img}_1.png`)} alt=""/></div>
-                </div>
-                :
-                <div key={"categoryimg_"+k} className={"categoryItem"} onClick={()=>handleCategoryClick(keys)}>
-                    <div  className={"categoryimg"}><img src={require(`../../../image/${a.img}.png`)} alt=""/></div>
-                    <div className={"categorytext font18"}>{a.text}</div>
-                </div>;
-            return d;
-        });
-        let swiperCount = addDom.length;
+        let categoryList = categoryList.length > 0 ? this.getDom() : [];
+        let swiperCount = categoryList.length;
         return(
             <div className={"categoryContent"} >
                 <SwiperComponent swiperOptions={swiperOptions} swiperContainer={swiperContainer} swiperCount={swiperCount}>
-                    {addDom}
+                    {categoryList}
                 </SwiperComponent>
             </div>
         )

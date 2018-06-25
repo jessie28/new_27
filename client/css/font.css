@@ -17,6 +17,7 @@ body{
 @value font28: 28px;
 @value font30: 30px;
 @value font40: 40px;
+@value font44: 44px;
 @value font50: 50px;
 @value font60: 60px;
 
@@ -74,6 +75,17 @@ body{
 
 [data-dpr="3"] .font24 {
     font-size: calc(var(--font3) * font24) !important;
+}
+.font44 {
+    font-size: font44 !important;
+}
+
+[data-dpr="2"] .font44 {
+    font-size: calc(var(--font2) * font44) !important;
+}
+
+[data-dpr="3"] .font44 {
+    font-size: calc(var(--font3) * font44) !important;
 }
 
 @font-face {
