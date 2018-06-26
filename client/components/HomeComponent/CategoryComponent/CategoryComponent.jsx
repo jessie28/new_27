@@ -26,17 +26,17 @@ export default class CategoryComponent extends React.Component{
                 subkey : 0
             }
             let d = cat.id === currentPicked[0]?
-                <div key={"categoryimg_"+index} className={"categoryItem activity"} onClick={()=>handleCategoryClick(cat.id,0)}>
+                <div key={"categoryimg_"+index} className={"categoryItem activity"} onClick={()=>handleCategoryClick(dataInfo)}>
                     <div  className={"categoryimg"}><img src={pickPic} alt=""/></div>
                 </div>
                 :
-                <div key={"categoryimg_"+k} className={"categoryItem"} onClick={()=>handleCategoryClick(cat.id,0)}>
+                <div key={"categoryimg_"+index} className={"categoryItem"} onClick={()=>handleCategoryClick(dataInfo)}>
                     <div  className={"categoryimg"}><img src={defaultPic} alt=""/></div>
                     <div className={"categorytext font18"}>{cat.name}</div>
                 </div>;
             return d;
         });
-
+        return doms;
     }
 
     render(){
@@ -47,13 +47,14 @@ export default class CategoryComponent extends React.Component{
             slidesPerView: 'auto',
             paginationClickable: true,
         };
+        let categoryList = props.categoryList;
         let swiperContainer = CONFIG.swiperContainers.categorySwiperContainer;
-        let categoryList = categoryList.length > 0 ? this.getDom() : [];
-        let swiperCount = categoryList.length;
+        let categoryLists = categoryList.length > 0 ? this.getDom() : [];
+        let swiperCount = categoryLists.length;
         return(
             <div className={"categoryContent"} >
                 <SwiperComponent swiperOptions={swiperOptions} swiperContainer={swiperContainer} swiperCount={swiperCount}>
-                    {categoryList}
+                    {categoryLists}
                 </SwiperComponent>
             </div>
         )

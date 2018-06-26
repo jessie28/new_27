@@ -20,7 +20,6 @@ function activateVendor() {
 }
 
 function renderPage(store) {
-    console.log(store);
     ReactDom.render(
         <Provider store={store}>
             <PageContainer />

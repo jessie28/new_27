@@ -1,34 +1,44 @@
 import React from 'react';
 import Swiper from 'swiper';
 import SwiperContainers from '../../../config/swiperContainer'
-require('./swiper.css')
+require('./swiper.css');
+
+let swiperListValues = Object.values(SwiperContainers);
+let initSwiperList = [];
+swiperListValues.forEach(s=>{
+    initSwiperList[s] = null;
+});
+
 export default class SwiperComponent extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            swiperList :initSwiperList,
             swiper : null
         }
     }
 
     componentDidMount(){
         let {swiperContainer,swiperOptions} = this.props;
+        let swiperList = this.state.swiperList;
+        swiperList[swiperContainer] =  new Swiper("."+swiperContainer, swiperOptions);
         this.setState({
-            swiper : new Swiper("."+swiperContainer, swiperOptions)
+            swiperList : swiperList
         })
 
     }
 
     componentDidUpdate(prevProps){
-        const { childCount } = this.props;
-        if (prevProps.childCount !== childCount) {
-            this.state.swiper.init();
+        const { swiperCount,swiperContainer } = this.props;
+        if (prevProps.swiperCount !== swiperCount) {
+            this.state.swiperList[swiperContainer].init();
         }
     }
 
     componentWillUnmount() {
         this.setState({
-            swiper : null
-    })
+            swiperList : initSwiperList
+        })
     }
 
     render(){

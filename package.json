@@ -29,6 +29,7 @@
     "minimist": "^1.2.0",
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
+    "prop-types": "^15.6.2",
     "react-hot-loader": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",

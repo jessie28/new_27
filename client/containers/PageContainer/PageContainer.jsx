@@ -35,7 +35,6 @@ class PageContainer extends React.Component{
 }
 
 const select = (store)=>{
-    console.log("store",store);
     return Object.assign({},{state:store})
 }
 

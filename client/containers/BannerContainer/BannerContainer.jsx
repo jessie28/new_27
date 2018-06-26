@@ -83,7 +83,7 @@ export default class BannerContainer extends React.Component{
         return(
 
             <div className={"bannerContainer"}>
-                <SwiperComponent swiperContainer={swiperContainer} swiperOptions={swiperOptions} childCount={swiperCount}>
+                <SwiperComponent swiperContainer={swiperContainer} swiperOptions={swiperOptions} swiperCount={swiperCount}>
                     {nodes}
                 </SwiperComponent>
             </div>
